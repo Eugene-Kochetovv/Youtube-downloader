@@ -1,0 +1,59 @@
+<Container>:
+
+    input: input_text
+    button_dow: button_donwload
+    list_videos: grid
+    Label:
+        size_hint: 0.1, 0.1
+        pos_hint: {'center_x': 0.5, 'top': 1}
+        font_size: 20
+        text: 'Введите ссылку'
+
+    TextInput:
+        id: input_text
+
+        multiline: False
+        size_hint: 1, 0.07
+        pos_hint: {'center_x': 0.5, 'top': 0.9}
+        font_size: 20
+
+        on_touch_down:
+            root.text_change()
+
+    Button:
+        id: button_donwload
+
+        size_hint: 0.4, 0.1
+        pos_hint: {'right': 1, 'top': 0.8}
+        text: 'Проверить'
+
+        on_release:
+            root.select_playlist()
+
+    Button:
+        size_hint: 0.4, 0.1
+        pos_hint: {'x': 0, 'top': 0.8}
+        text: 'Указать путь'
+
+        on_release:
+            root.select_path()
+
+    ProgressBar:
+        max: 100 #Добавить
+        value: 50 #Добавить
+        size_hint: 1, 0.1
+        pos_hint: {'x': 0, 'top': 0.74}
+
+    ScrollView:
+        size_hint_y: 0.65
+        pos_hint: {'x': 0, 'top': 0.6}
+        do_scroll_x: False
+        do_scroll_y: True
+
+        GridLayout:
+            id: grid
+            size: (root.width, root.height)
+            size_hint_x: None
+            size_hint_y: None
+            cols: 1
+            height: self.minimum_height
