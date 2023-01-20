@@ -57,6 +57,3 @@ class MyApp(MDApp):
 
 if __name__ == '__main__':
     MyApp().run()
-
-
-# https://www.youtube.com/playlist?list=PLzIAGsAFM_hcOEukz8r-oSx6H-SDKJTDq
