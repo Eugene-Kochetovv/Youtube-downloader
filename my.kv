@@ -1,0 +1,68 @@
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+
+<Container>:
+    rows: 5
+
+    url: url
+    cards: cards
+    progress_bar: progress_bar
+
+    AnchorLayout:
+        size_hint: 1, 0.15
+
+        Label:
+            size_hint: 0.1, 0.1
+            text: 'YouTube PlayList Dowloader'
+            font_size: '20'
+
+    AnchorLayout:
+        size_hint: 0.5, 0.1
+
+        MDTextField:
+            id: url
+            hint_text: "Paste URL"
+            multiline: False
+            font_size: '20'
+
+
+    GridLayout:
+        padding: 1
+        size_hint: 1, 0.15
+        cols: 3
+
+        AnchorLayout:
+            MDRectangleFlatButton:
+                font_size: '22'
+                text: 'Select path'
+                on_release: root.select_path()
+
+        AnchorLayout:
+            MDRectangleFlatButton:
+                font_size: '22'
+                text: 'View titles'
+                on_release: root.view_titles()
+
+        AnchorLayout:
+            MDRaisedButton:
+                font_size: '22'
+                text: 'Download'
+                on_release: root.dow()
+
+    AnchorLayout:
+        padding: 10
+        size_hint: 1, 0.1
+        MDProgressBar:
+            id: progress_bar
+
+
+    MDScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+
+        GridLayout:
+            id: cards
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            padding: 10
+            spacing: "20dp"
