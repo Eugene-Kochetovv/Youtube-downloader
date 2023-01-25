@@ -1,58 +1,90 @@
-#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
-
 <Container>:
-    rows: 5
+    rows: 6
 
     url: url
     cards: cards
     progress_bar: progress_bar
+    vt: vt
+    dw: dw
+
 
     AnchorLayout:
-        size_hint: 1, 0.15
+        size_hint: 1, 0.10
 
         Label:
-            size_hint: 0.1, 0.1
+            size_hint: 0.1, 0.05
             text: 'YouTube PlayList Dowloader'
             font_size: '20'
 
     AnchorLayout:
-        size_hint: 0.5, 0.1
+        size_hint: 0.5, 0.05
 
         MDTextField:
             id: url
+
             hint_text: "Paste URL"
             multiline: False
             font_size: '20'
 
-
     GridLayout:
         padding: 1
-        size_hint: 1, 0.15
+        size_hint: 1, 0.13
         cols: 3
 
         AnchorLayout:
+
             MDRectangleFlatButton:
                 font_size: '22'
                 text: 'Select path'
                 on_release: root.select_path()
 
         AnchorLayout:
+
             MDRectangleFlatButton:
+                id: vt
                 font_size: '22'
                 text: 'View titles'
+                disabled: True
                 on_release: root.view_titles()
 
         AnchorLayout:
+
             MDRaisedButton:
+                id: dw
+                md_bg_color: "brown"
                 font_size: '22'
                 text: 'Download'
-                on_release: root.dow()
+                disabled: True
+                on_release:
+                    root.download_button()
 
     AnchorLayout:
+
+        size_hint: .5, 0.05
+
+        MDSegmentedControl:
+
+            md_bg_color: "brown"
+            on_active: root.on_active(*args)
+
+            MDSegmentedControlItem:
+
+                text: "mp4"
+
+            MDSegmentedControlItem:
+
+                text: "mp3"
+
+    AnchorLayout:
+        size_hint: .5, 0.05
         padding: 10
-        size_hint: 1, 0.1
+
         MDProgressBar:
             id: progress_bar
+
+            type: "indeterminate"
+            running_duration: 1
+            catching_duration: 1.5
 
 
     MDScrollView:
@@ -61,6 +93,7 @@
 
         GridLayout:
             id: cards
+
             cols: 1
             size_hint_y: None
             height: self.minimum_height
